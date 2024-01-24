@@ -19,7 +19,6 @@ use Throwable;
 class StoreImageJob implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
-    private const IMAGE_STORAGE_DIR = 'images/';
 
     /**
      * Create a new job instance.
@@ -41,7 +40,7 @@ class StoreImageJob implements ShouldQueue
             throw new Exception('Failed to download image from external source.');
         }
 
-            $path = self::IMAGE_STORAGE_DIR . Str::slug($this->image->keyword) . uniqid() . ".jpg";
+            $path =Str::slug($this->image->keyword) . uniqid() . ".jpg";
             $url = StorageService::storeFile($path, $response->body());
             $this->image->updateImageUrl($url);
     }

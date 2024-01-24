@@ -90,6 +90,8 @@ class ImageResource extends Resource
                         'info'    => ImageStatusEnum::NEW
                     ]),
                 TextEntry::make('prompt'),
+                TextEntry::make('failure_details')->visible(fn (Image $image) => $image->status === ImageStatusEnum::FAILED),
+
                 ViewEntry::make('image_path')
                     ->view('components.show-image')
                     ->visible(fn (Image $image) => $image->status === ImageStatusEnum::COMPLETED)
