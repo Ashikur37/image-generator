@@ -96,7 +96,6 @@ class ImageResource extends Resource
                     ->view('components.show-image')
                     ->visible(fn (Image $image) => $image->status === ImageStatusEnum::COMPLETED)
                     ->label('Image'),
-                TextEntry::make('response'),
                 TextEntry::make('created_at')
                     ->since()->label('Created Date'),
                 TextEntry::make('updated_at')

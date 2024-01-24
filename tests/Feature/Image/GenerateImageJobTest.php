@@ -12,17 +12,15 @@ beforeEach(function () {
     // Arrange
     Bus::fake();
 });
-it('Can generate image', function () {
-    App\Models\Image::create(['keyword' => 'mountain','prompt'=>'nice mountain']);
+
+
+#check GenerateImagePromptJob job works
+it('GenerateImagePromptJob works', function () { App\Models\Image::create(['keyword' => 'mountain','prompt'=>'nice mountain']);
     Bus::assertChained([
         GenerateImagePromptJob::class,
         GenerateImageJob::class,
         StoreImageJob::class,
     ]);
-});
-
-#check GenerateImagePromptJob job works
-it('GenerateImagePromptJob works', function () {
     $image = App\Models\Image::create(['keyword' => 'mountain','prompt'=>'nice mountain']);
     #GenerateImagePromptJob fake
     Http::fake([

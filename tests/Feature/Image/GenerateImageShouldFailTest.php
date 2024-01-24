@@ -10,7 +10,7 @@ it('throws an exception when the API returns an error', function () {
         '*' => Http::response(
             [
                 "error" => [
-                    "code" => 400,
+                    "code" => 500,
                     "message" => "Invalid prompt: prompt must be a string.",
                     "type" => "invalid_request_error"
                 ]

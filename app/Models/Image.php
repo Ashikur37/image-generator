@@ -20,14 +20,6 @@ class Image extends Model
     protected $casts = [
         'status' => ImageStatusEnum::class,
     ];
-    public function getCreatedAtAttribute($value): string
-    {
-        return Carbon::parse($value)->diffForHumans();
-    }
-    public function getUpdatedAtAttribute($value): string
-    {
-        return Carbon::parse($value)->diffForHumans();
-    }
 
     public function updatePrompt(string $prompt): bool
     {

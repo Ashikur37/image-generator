@@ -36,7 +36,7 @@ class ImageObserver
      */
     public function deleted(Image $image): void
     {
-        $path = ltrim(parse_url($image->image_url, PHP_URL_PATH), '/');
+        $path = basename($image->image_url);
         StorageService::deleteFile($path);
     }
 
